@@ -1,0 +1,83 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<div class="content-wrapper">
+    <div class="container">
+
+        <h1 style="font-weight: bold">Create Category</h1>
+
+        <div class="row justify-content-center" style="margin-top: 50px">
+            <div class="col-md-5">
+               <form action="{% if category %}/category/update/{{ category.id }}/{% else %}/category/create/{% endif %}"
+                     method="POST"
+                     class="bg-light p-4 rounded shadow">
+
+                   {% csrf_token %}
+
+                   <div class="form-group">
+                        <label for="name">Product Name</label>
+                        <input type="text"
+                               class="form-control"
+                               id="name"
+                               name="product_name"
+                               placeholder="Enter Product Name"
+                               value="{{ products.product_name}}" required>
+                   </div>
+
+                   <div class="form-group">
+                        <label for="name">Barcode</label>
+                        <input type="text"
+                               class="form-control"
+                               id="name"
+                               name="barcode"
+                               placeholder="Enter barcode"
+                               value="{{ category.barcode}}" required>
+                   </div>
+
+                   <div class="form-group">
+                        <label for="name">Sell Price</label>
+                        <input type="text"
+                               class="form-control"
+                               id="name"
+                               name="sell_price"
+                                placeholder="Enter Sell Price"
+                               value="{{ category.sell_price}}" required>
+                   </div>
+
+                   <div class="form-group">
+                        <label for="name">Photo</label>
+                        <input type="file"
+                               class="form-control"
+                               id="name"
+                               name="file"
+                               value="{{ category.name}}" required>
+                   </div>
+
+                   <div class="form-group">
+                        <label for="name">Category</label>
+                        <input type="text"
+                               class="form-control"
+                               id="name"
+                               name="category_name"
+                               value="{{ category.name}}" required>
+                   </div>
+
+                   <div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            {% if category %}
+                                Update
+                            {% else %}
+                                Create
+                            {% endif %}
+                        </button>
+
+                        <a href="/product/index/" style="background-color: grey; color: white" class="btn btn-secondary btn-block">Back</a>
+                   </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
