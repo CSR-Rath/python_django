@@ -30,6 +30,17 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# INSTALLED_APPS = [
+#     'django.contrib.admin',
+#     'django.contrib.auth',
+#     'django.contrib.contenttypes',
+#     'django.contrib.sessions',
+#     'django.contrib.messages',
+#     'django.contrib.staticfiles',
+#     'rest_framework',
+#     'myapp', # stamp ====> 1
+# ]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,7 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'myapp', # stamp ====> 1
+    'rest_framework.authtoken',
+    'apiApp', # stamp ====> 1
 ]
 
 MIDDLEWARE = [
@@ -75,10 +87,21 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',# 'django.db.backends.postgresql',
+#             'NAME': 'testing_db',  # Replace with your actual database name
+#             'USER': 'postgres',  # Replace with your actual database user
+#             'PASSWORD': '123',  # Replace with your actual password
+#             'HOST': 'localhost',  # or the IP address of your PostgreSQL server
+#             'PORT': '9999',  # Default PostgreSQL port
+#     }
+# }
+
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',# 'django.db.backends.postgresql',
-            'NAME': 'testing_db',  # Replace with your actual database name
+            'NAME': 'DJANGO_POS_API',  # Replace with your actual database name
             'USER': 'postgres',  # Replace with your actual database user
             'PASSWORD': '123',  # Replace with your actual password
             'HOST': 'localhost',  # or the IP address of your PostgreSQL server
