@@ -13,7 +13,7 @@ from apiApp.serializer import CategorySerializer
 def home(request):
     return Response({
         "status": 200,
-        "message": "Welcome to APIApp!"
+        "message": "Startup API!"
     })
 
 
