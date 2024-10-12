@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',  # Required for serving media files
+    # 'django.contrib.staticfiles',  # Required for serving media files
     'rest_framework',  # api
     'apiApp'  # app name
 ]
