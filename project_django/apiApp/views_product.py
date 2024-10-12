@@ -107,3 +107,62 @@ def delete_product(request, product_id):
                 "message": "Product not found."
             }
         }, status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(["GET"])
+def filter_products(request):
+    products = Product.objects.all()
+
+    # Filter by ID if provided
+    product_id = request.query_params.get('id')
+    if product_id:
+        products = products.filter(id=product_id)
+
+    # Filter by name if provided
+    product_name = request.query_params.get('name')
+    if product_name:
+        products = products.filter(name__icontains=product_name)
+
+    # Check if products were found
+    if not products.exists():
+        return Response(data={
+            "response": {
+                "status": 404,
+                "message": "No products found matching the criteria."
+            }
+        }, status=status.HTTP_404_NOT_FOUND)
+
+    # Serialize the filtered products
+    serializer = ProductSerializer(products, many=True)
+
+    return Response(data={
+        "response": {
+            "status": 200,
+            "message": "Products retrieved successfully",
+        },
+        "results": serializer.data,
+    }, status=status.HTTP_200_OK)
+#
+# def filter_products(request):
+#     products = Product.objects.all()
+#
+#     # Filter by ID if provided
+#     product_id = request.query_params.get('id')
+#     if product_id:
+#         products = products.filter(id=product_id)
+#
+#     # Filter by name if provided
+#     product_name = request.query_params.get('name')
+#     if product_name:
+#         products = products.filter(name__icontains=product_name)
+#
+#     # Serialize the filtered products
+#     serializer = ProductSerializer(products, many=True)
+#
+#     return Response(data={
+#         "response": {
+#             "status": 200,
+#             "message": "Products retrieved successfully",
+#         },
+#         "results": serializer.data,
+#     }, status=status.HTTP_200_OK)
