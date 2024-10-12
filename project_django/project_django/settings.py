@@ -36,8 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'apiApp'
+    'django.contrib.staticfiles',  # Required for serving media files
+    'rest_framework',  # api
+    'apiApp'  # app name
 ]
 
 MIDDLEWARE = [
@@ -76,8 +77,12 @@ WSGI_APPLICATION = 'project_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',#'django.db.backends.postgresql_psycopg2',  # 'django.db.backends.postgresql',
+        'NAME': 'db_learn_django',  # Replace with your actual database name
+        'USER': 'postgres',  # Replace with your actual database user
+        'PASSWORD': '123',  # Replace with your actual password
+        'HOST': 'localhost',  # or the IP address of your PostgreSQL server
+        'PORT': '9999',  # Default PostgreSQL port
     }
 }
 
